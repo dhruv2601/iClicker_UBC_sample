@@ -70,7 +70,7 @@ public class Act1 extends AppCompatActivity {
                                         if(!courseList[0].isEmpty())
                                         {
                                             //pass intent
-                                            Intent i = new Intent(Act1.class, Act2.java);
+                                            Intent i = new Intent(Act1.this, Act2.class);
                                             startActivity(i);
                                         }
                                     }
