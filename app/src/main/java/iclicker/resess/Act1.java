@@ -27,7 +27,8 @@ public class Act1 extends AppCompatActivity {
     private String pwd="";
     private String url = "http://localhost:8000/authenticate.php/";     //append appropriately later
     private StringRequest stringRequest;
-    private String courseList[] = new String[4];
+    public static String courseList[] = new String[4];
+    public static String notSoSecretKey = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +80,8 @@ public class Act1 extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             // handle the error response here
+                            Toast.makeText(Act1.this, "Error "+error.getMessage().toString()+" in Act1 update", Toast.LENGTH_SHORT).show();
+
                         }
                     });
                 }
