@@ -1,5 +1,6 @@
 package iclicker.resess;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,9 @@ public class Act2 extends AppCompatActivity {
     private StringRequest stringRequest2;
     private StringRequest stringRequest3;
     private StringRequest stringRequest4;
+
+    public static String question = "";
+    public static String answer[] = new String[3];
 
     private String urlUpdateClass = "http://localhost:8000/authenticate.php/";;                 // append url later
     private String urlGetQuestion = "http://localhost:8000/authenticate.php/";                  // append url later
@@ -59,6 +63,7 @@ public class Act2 extends AppCompatActivity {
                         Toast.makeText(Act2.this, "Error "+error.getMessage().toString()+" in Act2 update", Toast.LENGTH_SHORT).show();
                     }
                 });
+
         Volley.newRequestQueue(this).add(stringRequest);
 
 
@@ -75,7 +80,11 @@ public class Act2 extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                Toast.makeText(Act2.this, "Act2 updated", Toast.LENGTH_SHORT).show();
+                                // response should contain the next question and answer for next activity
+                                Intent i = new Intent(Act2.this, Act3.class);
+                                i.putExtra("question", question);
+                                i.putExtra("answer", answer);
+                                startActivity(i);
                             }
                         },
                         new Response.ErrorListener() {
@@ -99,6 +108,10 @@ public class Act2 extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 // response should contain the next question and answer for next activity
+                                Intent i = new Intent(Act2.this, Act3.class);
+                                i.putExtra("question", question);
+                                i.putExtra("answer", answer);
+                                startActivity(i);
                             }
                         },
                         new Response.ErrorListener() {
@@ -122,6 +135,10 @@ public class Act2 extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 // response should contain the next question and answer for next activity
+                                Intent i = new Intent(Act2.this, Act3.class);
+                                i.putExtra("question", question);
+                                i.putExtra("answer", answer);
+                                startActivity(i);
                             }
                         },
                         new Response.ErrorListener() {
@@ -145,6 +162,10 @@ public class Act2 extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 // response should contain the next question and answer for next activity
+                                Intent i = new Intent(Act2.this, Act3.class);
+                                i.putExtra("question", question);
+                                i.putExtra("answer", answer);
+                                startActivity(i);
                             }
                         },
                         new Response.ErrorListener() {
